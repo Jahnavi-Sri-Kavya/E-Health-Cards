@@ -1,0 +1,284 @@
+<html>
+<head>
+<link rel="shortcut icon" type="image/png" href="favicon.png">
+<title>Admin Page</title>
+<style>
+* {box-sizing: border-box}
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+.container {
+  position: relative;
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px 0 30px 0;
+} 
+
+input,
+select,.btn {
+  width: 50%;
+  padding: 12px;
+  border: none;
+  border-radius: 4px;
+  margin: 5px 0;
+  opacity: 0.85;
+  display: inline-block;
+  font-size: 17px;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+input:hover,
+.btn:hover {
+  opacity: 1;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+@media screen and (max-width: 650px) {
+  .col {
+    width: 100%;
+    margin-top: 0;
+  }
+
+.vl {
+    display: none;
+  }
+
+.hide-md-lg {
+    display: block;
+    text-align: center;
+  }}
+
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#doc {background-color: lightblue;}
+#cli {background-color: lightblue;}
+#cash {background-color: lightblue;}
+#phar {background-color: lightblue;}
+
+.menuicon {
+  width: 35px;
+  height: 5px;
+  background-color: white;
+  margin: 6px 0;
+}
+
+.dropbtn {
+  background-color: #555;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #777;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #555;
+  min-width: 160px;
+  overflow: auto;
+  
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #777;}
+
+.show {display: block;}
+
+</style>
+</head>
+<body>
+<div class="dropdown">
+<button  onclick="myFunction()" class="dropbtn">
+<div class="menuicon"></div>
+<div class="menuicon"></div>
+<div class="menuicon"></div></button>
+<div id="myDropdown" class="dropdown-content">
+    <a href="profile.php">Profile</a>
+    <a href="#">Change password</a>
+    <a href="HMS.html">Logout</a>
+  </div>
+</div>
+<br>
+<button class="tablink" onclick="openPage('doc', this, '#555')">Doctor Registration</button>
+<button class="tablink" onclick="openPage('cli', this, '#555')" id="defaultOpen">Clinic / Receptionist Registration</button>
+<button class="tablink" onclick="openPage('cash', this, '#555')">Patient Registration</button>
+<button class="tablink" onclick="openPage('phar', this, '#555')">Pharmacy Medical</button>
+
+<div id="doc" class="tabcontent">
+  <div class="container">
+  <form action="Doctor.php" method="post">
+    <div class="row">
+      <h2 style="text-align:center;color:black;">Doctor Registration</h2>
+      
+      <div align="center">
+        <input type="text" name="dname" placeholder="Name" required>
+        <input type="tel" name="telno" placeholder="Mobile no"  required>
+        <input type="text" name="qualification" placeholder="Qualification" required>
+        <input type="email" name="email" placeholder="Email id" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="address" placeholder="Hospital Address" required>
+        <select name="specialist">
+        <option>...Select the Specialist...</option>
+        <option>Generalward</option>
+        <option>Cardiologist</option>
+        <option>Gynecologist</option>
+        <option>Neurologist</option>
+        <option>Pediatrician</option>
+        <option>Nephrologist</option></select><br>
+        <input type="submit" name="submit" value="Signup">
+      </div>
+      
+    </div>
+  </form>
+</div>
+</div>
+
+<div id="cli" class="tabcontent">
+  <div class="container">
+  <form action="clinic.php" method="post">
+    <div class="row">
+      <h2 style="text-align:center;color:black;">Receptionist Registration</h2>
+      
+      <div align="center">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="tel" name="telno" placeholder="Mobile no" required>
+        <input type="text" name="qualification" placeholder="Qualification" required>
+        <input type="email" name="email" placeholder="Email id" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="address" placeholder="Clinic Address" required>
+        <input type="submit" name="submit" value="Signup">
+      </div>
+      
+    </div>
+  </form>
+</div>
+</div>
+
+<div id="cash" class="tabcontent">
+  <div class="container">
+  <form action="cashier.php" method="post">
+    <div class="row">
+      <h2 style="text-align:center;color:black;">Patient Registration</h2>
+      
+      <div align="center">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="tel" name="telno" placeholder="Mobile no" required>
+        <input type="text" name="qualification" placeholder="Disease name" required>
+        <input type="email" name="email" placeholder="Email id" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="address" placeholder="Hospital Address" required>
+        <input type="submit" name="submit" value="Signup">
+      </div>
+      
+    </div>
+  </form>
+</div>
+</div>
+
+<div id="phar" class="tabcontent">
+  <div class="container">
+  <form action="pharmacy.php" method="post">
+    <div class="row">
+      <h2 style="text-align:center;color:black;">Pharmacy Registration</h2>
+      
+      <div align="center">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="tel" name="telno" placeholder="Mobile no" required>
+        <input type="text" name="qualification" placeholder="Qualification" required>
+        <input type="email" name="email" placeholder="Email id" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <input type="text" name="address" placeholder="Hospital Address" required>
+        <input type="submit" name="submit" value="Signup">
+      </div>
+      
+    </div>
+  </form>
+</div>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+document.getElementById("defaultOpen").click();
+
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+</body>
+</html>
